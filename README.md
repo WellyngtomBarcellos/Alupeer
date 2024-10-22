@@ -18,17 +18,20 @@
 Com um sistema intuitivo de busca, você pode encontrar rapidamente produtos que atendem às suas necessidades, desde equipamentos de camping e ferramentas até itens de decoração e tecnologia.
 
 ##Variedade de Produtos:
+
 Nossa plataforma oferece uma ampla gama de categorias de produtos, garantindo que você sempre encontre o que precisa, quando precisa.
 
-##Segurança e Confiabilidade:
+## Segurança e Confiabilidade:
+
 Na Alupeer, priorizamos a segurança dos nossos usuários. Implementamos medidas rigorosas de verificação e avaliações de usuários para garantir que cada transação seja confiável.
 
-##Apoio ao Usuário:
+## Apoio ao Usuário:
+
 Nossa equipe de suporte está sempre disponível para ajudar com qualquer dúvida ou problema, garantindo uma experiência de aluguel tranquila e satisfatória.
 
 --
 
-##Licença de Uso da Plataforma Alupeer📜
+## Licença de Uso da Plataforma Alupeer📜
 
 Alupeer LLC Copyright (C) 2024
 
