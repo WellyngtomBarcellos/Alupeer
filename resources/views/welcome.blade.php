@@ -2,9 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4207338093772179"
-        crossorigin="anonymous"></script>
-        <meta name="google-adsense-account" content="ca-pub-4207338093772179">
     <!-- Meta-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,9 +50,7 @@
     <!-- Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="{{asset('js/notifyError.js')}}?v={{ time() }}"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4207338093772179"
-        crossorigin="anonymous"></script>
+
     <script src="https://kit.fontawesome.com/5a2e7b261b.js" crossorigin="anonymous"></script>
 
     <title>Aluguel Online perto de você | {{ config('app.name') }}</title>
