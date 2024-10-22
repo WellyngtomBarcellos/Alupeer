@@ -1,0 +1,415 @@
+body {
+    position: relative;
+}
+
+.contaner_messages {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.produt_contat {
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
+
+}
+
+.messenger {
+    padding: 10px;
+    max-height: 100%;
+    height: 80dvh;
+    border-radius: 10px;
+    width: 60%;
+}
+
+.close_reservation {
+    top: 0;
+    color: var(--colorBlack);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.header-r {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid var(--colorBlack_);
+}
+
+.reserva-info {
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+
+.errorreturn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.reserva-info .respoder {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.checjs {
+    border: 1px solid var(--colorBlack_);
+    padding: 10px 35px;
+}
+
+.checjs p:nth-child(1) {
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.checjs:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+}
+
+.checjs:nth-child(2) {
+    border-radius: 0 10px 10px 0;
+}
+
+.checjs:nth-child(1) {
+    border-right: 1px solid transparent;
+}
+
+.charges {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.not-fee {
+    text-align: center;
+    font-size: .8rem;
+    padding: 5px;
+}
+
+.ButtonLoading {
+    padding: 20px;
+    background: transparent;
+    text-align: center;
+}
+
+.ReservarOk {
+    padding: 20px;
+    background: var(--blue);
+    color: var(--colorPrimary);
+    text-align: center;
+    border: 1px solid var(--colorBlack);
+    border-bottom: 5px solid var(--colorBlack);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.deta,
+.charges {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    padding: 30px 0 30px 0;
+}
+
+.deta p:nth-child(1) {
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.deta p:nth-child(2) {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.dates-review {
+    display: flex;
+    justify-content: center;
+
+}
+
+.reserva-info h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.header-r p {
+    font-size: 1rem;
+}
+
+.info_total {
+    padding: 10px;
+    background-color: #000000aa;
+    color: var(--colorPrimary);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    width: 100%;
+    height: 100dvh;
+}
+
+.popup_reservation {
+    width: 50%;
+    padding: 10px;
+    background: var(--colorPrimary);
+    color: var(--colorBlack);
+    border-radius: 10px;
+    border: 1px solid var(--colorBlack);
+    position: relative;
+}
+
+.info_total span {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+
+}
+
+.info_total span p {
+    padding: 0 5px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+
+
+
+
+
+.messenger-messagingView .m-body {
+    position: relative;
+    padding-top: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+
+
+}
+
+.messages {
+    padding: 5px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.message {
+    font-size: .8rem;
+}
+
+.messenger-messagingView {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.container_pro {
+    border-radius: 10px;
+    background: var(--colorPrimary);
+}
+
+.image_loade {
+    width: 150px;
+    height: 150px;
+    margin-top: 30px;
+    display: none;
+}
+
+.pri {
+    display: flex;
+    align-items: center;
+}
+
+.image_loade img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#pricing_loade {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.details {
+    padding: 20px;
+    font-size: .9rem;
+}
+
+.detalhes_dates {
+    display: none;
+    cursor: pointer;
+    background: #000000c3;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.dates-informe {
+    background: blue;
+}
+
+.show_dates {
+    display: block;
+    color: var(--blue);
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+
+}
+
+.container_date {
+    background: var(--colorPrimary);
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+    overflow: auto;
+}
+
+.dates-list {
+    text-align: center;
+}
+
+.dates-list p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.dates-list ul {
+    list-style: none;
+}
+
+.loaderine {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: var(--blue);
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loaderine::after,
+.loaderine::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: scale(0.5) translate(0, 0);
+    background-color: var(--yellow);
+    border-radius: 50%;
+    animation: animloader 1s infinite ease-in-out;
+}
+
+.loaderine::before {
+    background-color: var(--yellow);
+    transform: scale(0.5) translate(-48px, -48px);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animloader {
+    50% {
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:795px) {
+    .contaner_messages {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .popup_reservation {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .messenger,
+    .produt_contat {
+        width: 100%;
+    }
+
+}

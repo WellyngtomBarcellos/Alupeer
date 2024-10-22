@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+section{
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: ease .2s ease;
+}
+.ball{
+    width: 500px;
+    height: 500px;
+    background: #3e51fc;
+    border-radius: 20px;
+    position: relative;
+    border: 2px solid #000;
+    border-bottom: 10px solid #000;
+}
+.right img{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+
+}
+.left{
+    width: 400px;
+}
+h1{
+
+    font-size: 2.5rem;
+    padding: 10px;
+}
+p{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.download_link{
+    padding: 10px;
+    background: #3e51fc;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid transparent;
+}
+.download_link:hover{
+    border: 1px solid #000;
+    border-bottom: 5px solid #000;
+}
+
+
+@media (max-width:930px){
+    .ball{
+        width:300px;
+        height: 300px;
+    }
+
+    .right,
+    .left{
+
+        padding: 10px;
+    }
+    section{
+justify-content: center;
+gap: 0;
+    }
+    body{
+
+    }
+}

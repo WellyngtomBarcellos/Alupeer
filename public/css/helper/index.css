@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+
+}
+
+nav {
+    width: 100%;
+}
+
+body {
+    height: 100dvh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    overflow-x: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+
+}

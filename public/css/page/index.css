@@ -1,0 +1,771 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input,
+textarea,
+select {
+    font-size: 16px;
+    /* Ajusta o tamanho da fonte para 16px ou maior */
+}
+
+body {
+    position: absolute;
+    height: auto;
+}
+
+
+.top-flutter {
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+
+
+.flutter {
+    width: clamp(30vw, 15rem, 500px);
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px 100px 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+    z-index: 10;
+    left: -5px;
+    position: sticky;
+    top: 0;
+}
+
+.flutter-stick {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+}
+
+
+
+.flutter span {
+    display: flex;
+    align-items: center;
+}
+
+.flutter span strong {
+    font-size: 2.5rem;
+}
+
+
+
+.flutter p:nth-child(2) {
+    font-size: .7rem;
+    color: var(--colorBlack_);
+}
+
+.flutter h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#filter_container {
+    padding: 0;
+    margin: 0;
+}
+
+#Section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+
+}
+
+
+
+.App_page {
+    display: flex;
+    justify-content: center;
+
+}
+
+.images {
+    width: 100%;
+}
+
+.main-carousel {
+    width: 100%;
+}
+
+.carousel-cell {
+    width: 100%;
+    height: 80dvh;
+    background: #000;
+    display: flex;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.main_page {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+
+.carousel-cell img {
+    width: 100%;
+    padding: 5px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.foreground-image {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+}
+
+.container {
+    padding: 30px 0;
+}
+
+
+.rate {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    width: 300px;
+
+}
+
+.rate_icon {
+    font-size: 1.5rem;
+}
+
+.icon_poo {
+    color: red;
+}
+
+.icon_half {
+    color: var(--blue);
+    text-shadow: 0 0 5px var(--blue);
+}
+
+.icon_star {
+    color: var(--blue);
+    text-shadow: 0 0 5px var(--blue);
+}
+
+.wheat {
+    height: 100px;
+    position: absolute;
+}
+
+.wheat_top {
+    left: 20px;
+}
+
+.wheat_bottom {
+    right: 20px;
+    transform: rotateY(180deg);
+}
+
+.wheat_top_four {
+    left: 20px;
+    transform: rotate(40deg);
+}
+
+.wheat_bottom_four {
+    right: 20px;
+    transform: rotateY(180deg) rotate(40deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+.mapboxgl-ctrl-attrib-inner {
+    display: none;
+}
+
+.review {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.reviews_slide {
+    padding: 30px;
+    width: 100%;
+
+}
+
+.coments {
+    width: 100%;
+    text-align: center;
+}
+
+.header {
+    padding: 30px 10px;
+}
+
+
+
+.rate p {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+
+
+.info p {
+    font-weight: 800;
+    font-size: 1.5rem;
+    display: flex;
+    padding: 10px 0;
+}
+
+.info p span {
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.descricao {
+    padding: 10px 0;
+    font-size: .9rem;
+}
+
+.booking,
+.booking-off {
+    width: 95%;
+    color: var(--colorPrimary);
+    padding: 20px 10px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--blue);
+}
+
+.container-detais {
+    padding: 10px;
+    text-align: center;
+}
+
+.container-detais h1 {
+    font-size: 2.5rem;
+    padding: 10px;
+}
+
+.container-detais p:nth-child(2) {
+    font-size: 1.2rem;
+}
+
+.wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 2px;
+    width: 500px;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.card {
+    box-sizing: border-box;
+    padding: 20px 30px;
+    flex-shrink: 0;
+    width: 500px;
+    background: var(--colorPrimary);
+    border-radius: 10px;
+    text-align: center;
+    scroll-snap-align: center;
+}
+
+.card_review {
+    position: relative;
+    padding: 50px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    outline: none;
+    background: var(--blue);
+    border: 1px solid var(--colorBlack);
+    border-bottom: 4px solid var(--colorBlack);
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.scroll-button:hover {
+    background: var(--yellow);
+}
+
+.profile {
+    display: flex;
+    gap: 10px;
+}
+
+.status p {
+    font-weight: bold;
+}
+
+.status .rate_star {
+    font-size: .5rem;
+}
+
+.status {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.coment p {
+    text-align: start;
+    font-size: .9rem;
+}
+
+
+
+.profile_left {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--colorBlack);
+}
+
+.dates {
+    font-size: .9rem;
+    color: var(--colorBlack);
+    display: flex;
+}
+
+.dates img {
+    height: 70px;
+    text-shadow: 10px 10px 10px 10px gold;
+}
+
+.tanking {
+    display: flex;
+    align-items: center;
+}
+
+.tanking p {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: goldenrod;
+}
+
+.le {
+    transform: scaleX(-1);
+}
+
+.gold {
+    font-size: .8rem;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.meet {
+    display: flex;
+    padding: 50px 10px;
+    border: 1px solid var(--colorBlack);
+    border-bottom: 4px solid var(--colorBlack);
+    border-radius: 20px;
+    width: 50%;
+}
+
+
+.flutter_mobile {
+    display: none;
+    border-radius: 10px;
+    z-index: 999;
+    border: 1px solid var(--colorBlack_);
+}
+
+.headering {
+    width: 90%;
+    padding: 10px;
+    border-radius: 150px;
+    border: 1px solid var(--colorBlack_);
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--colorPrimary);
+}
+
+.headering span:nth-child(2) {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--colorBlack);
+}
+
+.headering span:nth-child(1) {
+    background: var(--blue);
+    border-radius: 100px;
+    width: 10px;
+    height: 10px;
+    padding: 5px 10px;
+    color: var(--colorBlack);
+}
+
+.namee {
+    font-size: 1rem;
+}
+
+.information_mobile {
+    width: 100%;
+    border-radius: 0px;
+    flex-direction: column;
+    background: var(--colorPrimary);
+    padding: 10px;
+    height: 94dvh;
+    border-top: 1px solid var(--colorBlack_);
+    position: relative;
+    border-radius: 10px 10px 0 0;
+
+    display: flex;
+    position: absolute;
+    bottom: -900px;
+    /* Inicialmente fora da tela */
+    left: 0;
+    transition: bottom 0.3s ease-in-out;
+}
+
+.price_mb {
+    font-weight: bold;
+}
+
+.close_information_mobile {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    background: var(--blue);
+    color: var(--colorPrimary);
+    margin-bottom: 30px;
+    position: absolute;
+    top: -40px;
+    left: 0;
+
+}
+
+.information_mobile.show {
+    bottom: 10px;
+    /* Move o elemento para a vista */
+}
+
+.floa {
+    display: flex;
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    left: 0;
+    padding: 0 10px;
+    justify-content: space-between;
+}
+
+
+#ask {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+
+}
+
+.askk {
+    border: none;
+    outline: none;
+    background: var(--blue);
+    color: var(--colorPrimary);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+#asking {
+    width: 100%;
+    min-height: 30px;
+    align-content: center;
+    padding: 10px;
+    font-family: 'Popins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid var(--colorBlack_);
+    background: var(--colorPrimary);
+    resize: none;
+    border-radius: 10px;
+
+}
+
+.text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+#charCount {
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    font-size: .8rem;
+}
+
+.maping {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#comentarios_section {
+    width: 60%;
+    text-align: start;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#comentario_profile {
+    position: relative;
+    padding: 25px 0;
+    border-bottom: 1px solid #0000003c;
+}
+
+#comentario_profile:last-child {
+    border-bottom: none;
+}
+
+#comentario_profile span {
+    padding: 0 20px;
+    color: #00000093;
+}
+
+.answer {
+    position: absolute;
+    bottom: 35px;
+    transform: rotate(180deg);
+    font-size: .7rem;
+    color: var(--blue);
+}
+
+.username {
+    font-size: .8rem;
+}
+
+.see_more {
+    color: var(--blue);
+    cursor: pointer;
+    font-size: .8rem;
+}
+
+#comentario_profile i span {
+    font-weight: 500;
+    font-size: .7rem;
+}
+
+#comentario_profile span span {
+    font-weight: 500;
+    font-size: .7rem;
+}
+
+.responder {
+    font-size: .7rem;
+    color: rgba(0, 0, 255, 0.475);
+    cursor: pointer;
+    display: block;
+    width: 100px;
+}
+
+.answer_container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.answer_container textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid var(--colorBlack_);
+    background: var(--colorPrimary);
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    padding: 5px;
+}
+
+.responder_btn {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: var(--colorPrimary);
+    background: var(--blue);
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .flutter_mobile {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        background: var(--colorPrimary);
+        text-align: center;
+    }
+
+    .text {
+        width: 100%;
+    }
+
+    .flutter {
+        display: none;
+    }
+
+    .main_page {
+        width: 100vw;
+        padding: 5px;
+    }
+
+    .carousel-cell {
+        width: 100%;
+        height: 300px;
+        background: #000;
+        display: flex;
+    }
+
+    .top-flutter {
+        display: none;
+    }
+
+    #comentarios_section {
+        width: 90%;
+    }
+
+    .images {
+        width: 100%;
+    }
+
+    .meet {
+        display: flex;
+        flex-direction: column;
+        border: 0px solid #00000012;
+    }
+
+    .meet_loquer {
+        padding: 5px;
+    }
+
+    #ask {
+        padding: 10px;
+    }
+
+    .coments {
+        margin-bottom: 90px;
+    }
+
+    .card_review {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        overflow-x: scroll;
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 10px;
+        scroll-snap-align: left;
+    }
+
+    .scroll-button {
+        display: none;
+    }
+
+    .booking {
+        border-radius: 0;
+    }
+
+    .information_mobile {
+        border: none;
+    }
+
+    body {
+        width: 100vw;
+    }
+
+
+}

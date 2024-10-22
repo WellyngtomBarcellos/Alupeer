@@ -1,0 +1,23 @@
+#Filter{
+    left: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--colorBlack);
+    cursor: pointer;
+    gap: 10px;
+    font-weight: 500;
+    font-size: .9rem;
+    padding: 10px 20px;
+}
+
+#Filter:hover{
+    background: var(--colorPrimary);
+    color: var(--colorBlack);
+}
+input,
+textarea,
+select {
+    font-size: 16px; /* Ajusta o tamanho da fonte para 16px ou maior */
+}

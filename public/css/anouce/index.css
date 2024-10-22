@@ -1,0 +1,1222 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --white: #fff;
+    --colorPrimary: #fff;
+    --colorSecond: #fafafa;
+
+    --colorBlack_: #1212126d;
+    --colorBlack: #212121;
+
+
+    --yellow: #ef3c4577;
+    --blue: #ef3c46;
+
+}
+
+#anounce_Bar {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sending {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cont {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#anounce_Bar .side img {
+    height: 30px;
+}
+
+.back_side {
+    border-radius: 10px;
+    background: var(--blue);
+    color: var(--colorPrimary);
+    border: 1px solid var(--colorBlack);
+    border-bottom: 5px solid var(--colorBlack);
+    padding: 10px 50px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.back_side:hover {
+    background: var(--yellow);
+    color: var(--colorBlack);
+}
+
+#next_step_two span,
+#sendDataButton {
+    pad: 10px;
+    cursor: pointer;
+    background: var(--colorBlack);
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid var(--colorPrimary);
+    border-bottom: 5px solid var(--colorPrimary);
+    color: var(--colorPrimary);
+}
+
+#next_step:hover,
+#next_step_two span:hover,
+#sendDataButton:hover {
+    border: 1px solid var(--colorBlackO);
+    box-shadow: 0 5px 10px var(--colorBlackO);
+    background: var(--blue);
+    color: #fff;
+    border: 1px solid var(--colorBlack);
+    border-bottom: 5px solid var(--colorBlack);
+}
+
+
+
+
+/*
+
+    Categoria Layout
+
+*/
+
+
+#App_Anounce {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Components {
+    width: 50%;
+}
+
+
+
+
+#Category_Selection {
+    width: 100%;
+    display: none;
+}
+
+#Category_Selection h1 {
+    padding: 30px;
+}
+
+.options_tool {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category_selected {
+    display: none;
+}
+
+/*
+
+    Float Selection
+
+*/
+
+#Float_Selection {
+    width: 100%;
+    padding: 10px;
+    display: none;
+}
+
+.float_container {
+    padding: 10px;
+}
+
+.float_selected {
+    padding: 30px;
+}
+
+/*
+
+    Title Selection
+
+*/
+
+#Title_Selection {
+    display: none;
+    padding: 20px;
+}
+
+#Title_Selection p {
+    padding: 0 0 30px 0;
+}
+
+#Title_Selection textarea {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: 2.5rem;
+    resize: none;
+    background: var(--colorPrimary);
+}
+
+/*
+
+    Title Selection
+
+*/
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#Price_Selection {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.priceContainer {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+
+    padding: 5px;
+}
+
+.priceContainer label {
+
+    text-align: center;
+    font-size: 6rem;
+}
+
+.priceContainer input {
+    font-size: 6rem;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-weight: bold;
+    width: 200px;
+    text-align: center;
+    background: var(--colorPrimary);
+
+}
+
+.tax {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+.resum,
+.earn {
+    padding: 20px;
+    font-weight: 500;
+}
+
+.sider {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 5px;
+}
+
+.earnings,
+.price,
+.rental-fee {
+    font-weight: bold;
+}
+
+.sider p:nth-child(1) {
+    font-size: .9rem;
+}
+
+/*
+
+    Description Selection
+
+*/
+
+#Description_Selection {
+    width: 100%;
+    padding: 20px;
+    display: none;
+}
+
+#Description_Selection textarea {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    padding: 30px;
+    resize: none;
+    font-size: 2rem;
+    background: var(--colorPrimary);
+}
+
+.header-desc {
+    padding: 0 0 20px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+
+    Localization Selection
+
+*/
+
+#Location_Selection {
+    display: block;
+}
+
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+    display: none;
+}
+
+.mapboxgl-ctrl-geocoder {
+    max-width: none;
+    /* Remover a restrição de largura padrão */
+    width: 100%;
+    /* Definir a largura completa */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Adicionar sombra */
+    border-radius: 5px;
+    /* Arredondar bordas */
+}
+
+.mapboxgl-ctrl-geocoder--input {
+    padding: 10px;
+    /* Adicionar padding ao input */
+    font-size: 16px;
+    /* Aumentar o tamanho da fonte */
+}
+
+.mapboxgl-ctrl-geocoder--button {
+    padding: 10px;
+    /* Adicionar padding ao botão */
+}
+
+#map_container {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+}
+
+#map {
+    margin-top: 35px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#next_step {
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 30px;
+    text-align: center;
+    font-size: .9rem;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 999999;
+
+}
+
+.done:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 10px 10px #00000046;
+}
+
+/*
+
+    Images Selection
+
+*/
+#Images_Selection {
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contaner_drop {
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.contaner_drop h3 {
+    text-align: left;
+    padding: 5px 0;
+}
+
+.error {
+    display: none;
+    padding: 10px;
+    background: rgba(255, 0, 0, 0.215);
+    border-radius: 10px;
+    border: 1px solid #0000005c;
+    margin: 10px;
+    text-align: center;
+}
+
+#Images_Selection p {
+    padding: 0 0 30px 0;
+}
+
+.droparea i {
+    font-size: 3rem;
+}
+
+.droparea {
+    border: 3px dotted #ccc;
+    border-radius: 5px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+    align-self: center;
+}
+
+.droparea.dragover {
+    border-color: #000;
+}
+
+.preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    gap: 30px;
+}
+
+.container_img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+}
+
+.container_img img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container_img img:hover {
+    opacity: .8;
+}
+
+
+/*
+
+    CATEGORY LIST STYLE
+
+*/
+
+
+.checkbox-icon ion-icon {
+    font-size: 2rem;
+}
+
+.checkbox-wrapper-16 *,
+.checkbox-wrapper-16 *:after,
+.checkbox-wrapper-16 *:before {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper-16 {
+
+    display: flex;
+    width: 7rem;
+}
+
+.checkbox-wrapper-16 .checkbox-input {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+
+}
+
+.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile {
+    background: var(--blue);
+    color: var(--colorPrimary);
+    border: 1px solid var(--colorBlack);
+    border-bottom: 4px solid var(--colorBlack);
+}
+
+.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile:before {
+    transform: scale(.5);
+    opacity: 1;
+    background: transparent;
+    color: var(--colorPrimary);
+}
+
+.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile .checkbox-icon,
+.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile .checkbox-label {
+    color: var(--colorPrimary);
+
+}
+
+.checkbox-label {
+    font-size: .9rem;
+}
+
+.checkbox-wrapper-16 .checkbox-input:focus+.checkbox-tile {}
+
+.checkbox-wrapper-16 .checkbox-input:focus+.checkbox-tile:before {
+    transform: scale(.5);
+    opacity: 1;
+    border-radius: 150px;
+
+}
+
+.checkbox-wrapper-16 .checkbox-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    min-height: 7rem;
+    border-radius: 0.5rem;
+    background-color: var(--colorPrimary);
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-wrapper-16 .checkbox-tile:before {
+    position: absolute;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--colorBlackO);
+    border-radius: 50%;
+    top: 0.25rem;
+    left: 0.25rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.25s ease;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.checkbox-wrapper-16 .checkbox-tile:hover {
+    border-color: var(--colorBlack);
+}
+
+.checkbox-wrapper-16 .checkbox-tile:hover:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.checkbox-wrapper-16 .checkbox-icon {
+    transition: 0.375s ease;
+    color: #494949;
+}
+
+.checkbox-wrapper-16 .checkbox-icon svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.checkbox-wrapper-16 .checkbox-label {
+    color: #707070;
+    transition: 0.375s ease;
+    text-align: center;
+}
+
+.checkbox-wrapper-11 {
+    --text: #414856;
+    --check: #4F29F0;
+    --disabled: #C3C8DE;
+    --border-radius: 10px;
+    border-radius: var(--border-radius);
+    position: relative;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    align-items: center;
+}
+
+.checkbox-wrapper-11 label {
+    color: var(--text);
+    position: relative;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    transition: color 0.3s ease;
+}
+
+.checkbox-wrapper-11 label::before,
+.checkbox-wrapper-11 label::after {
+    content: "";
+    position: absolute;
+}
+
+.checkbox-wrapper-11 label::before {
+    height: 2px;
+    width: 8px;
+    left: -27px;
+    background: var(--check);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.checkbox-wrapper-11 label::after {
+    height: 4px;
+    width: 4px;
+    top: 8px;
+    left: -25px;
+    border-radius: 50%;
+}
+
+.checkbox-wrapper-11 input[type=radio] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    outline: none;
+    border: 0;
+    margin: 0 15px 0 0;
+    cursor: pointer;
+    background: var(--background);
+    display: grid;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.checkbox-wrapper-11 input[type=radio]::before,
+.checkbox-wrapper-11 input[type=radio]::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    top: auto;
+    background: var(--check);
+    border-radius: 2px;
+}
+
+.checkbox-wrapper-11 input[type=radio]::before {
+    width: 0px;
+    right: 60%;
+    transform-origin: right bottom;
+}
+
+.checkbox-wrapper-11 input[type=radio]::after {
+    width: 0px;
+    left: 40%;
+    transform-origin: left bottom;
+}
+
+.checkbox-wrapper-11 input[type=radio]:checked::before {
+    -webkit-animation: check-01-11 0.4s ease forwards;
+    animation: check-01-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:checked::after {
+    -webkit-animation: check-02-11 0.4s ease forwards;
+    animation: check-02-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:checked+label {
+    color: var(--disabled);
+    -webkit-animation: move-11 0.3s ease 0.1s forwards;
+    animation: move-11 0.3s ease 0.1s forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:checked+label::before {
+    background: var(--disabled);
+    -webkit-animation: slice-11 0.4s ease forwards;
+    animation: slice-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:checked+label::after {
+    -webkit-animation: firework-11 0.5s ease forwards 0.1s;
+    animation: firework-11 0.5s ease forwards 0.1s;
+}
+
+.checkbox-wrapper-11 input[type=radio]:not(:checked)::before {
+    -webkit-animation: uncheck-01-11 0.4s ease forwards;
+    animation: uncheck-01-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:not(:checked)::after {
+    -webkit-animation: uncheck-02-11 0.4s ease forwards;
+    animation: uncheck-02-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:not(:checked)+label {
+    color: var(--text);
+    -webkit-animation: move-back-11 0.3s ease 0.1s forwards;
+    animation: move-back-11 0.3s ease 0.1s forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:not(:checked)+label::before {
+    background: var(--check);
+    -webkit-animation: slice-back-11 0.4s ease forwards;
+    animation: slice-back-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper-11 input[type=radio]:not(:checked)+label::after {
+    -webkit-animation: firework-back-11 0.5s ease forwards 0.1s;
+    animation: firework-back-11 0.5s ease forwards 0.1s;
+}
+
+
+
+
+/*
+
+    Button Next Step
+
+*/
+
+.timing {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.funny {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#next_step_two span {
+    background: #000;
+    color: #fff;
+
+}
+
+
+#sendDataButton {
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+    z-index: 300000;
+}
+
+#next_step_two {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 300000;
+
+}
+
+.contianer {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    z-index: 99999;
+}
+
+#map {
+    height: 400px;
+    width: 100vw;
+}
+
+#next_step {
+    display: none;
+    background: var(--colorBlack);
+    border: 1px solid var(--colorPrimary);
+    border-bottom: 5px solid var(--colorPrimary);
+}
+
+
+.options_tool {
+    padding-bottom: 80px;
+}
+
+.slide-in-blurred-top {
+    -webkit-animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both;
+    animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both
+}
+
+@-webkit-keyframes slide-in-blurred-top {
+    0% {
+        -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(.2);
+        transform: translateY(-1000px) scaleY(2.5) scaleX(.2);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-filter: blur(40px);
+        filter: blur(40px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+        transform: translateY(0) scaleY(1) scaleX(1);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-blurred-top {
+    0% {
+        -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(.2);
+        transform: translateY(-1000px) scaleY(2.5) scaleX(.2);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-filter: blur(40px);
+        filter: blur(40px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+        transform: translateY(0) scaleY(1) scaleX(1);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1
+    }
+}
+
+
+@media (max-width:500) {
+    #next_step {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .tax {
+        width: 100%;
+    }
+}
+
+@media (max-width:800px) {
+    .Components {
+        width: 100%;
+    }
+}
+
+
+
+
+
+@-webkit-keyframes move-11 {
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@keyframes move-11 {
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@-webkit-keyframes slice-11 {
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 100%;
+        left: -2px;
+        padding-left: 0;
+    }
+}
+
+@keyframes slice-11 {
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 100%;
+        left: -2px;
+        padding-left: 0;
+    }
+}
+
+@-webkit-keyframes check-01-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes check-01-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes check-02-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes check-02-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+}
+
+@-webkit-keyframes firework-11 {
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+}
+
+@keyframes firework-11 {
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+}
+
+@-webkit-keyframes uncheck-01-11 {
+    0% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    100% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+}
+
+@keyframes uncheck-01-11 {
+    0% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    100% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes uncheck-02-11 {
+    0% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    100% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+}
+
+@keyframes uncheck-02-11 {
+    0% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    100% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes move-back-11 {
+    0% {
+        padding-right: 4px;
+    }
+
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@keyframes move-back-11 {
+    0% {
+        padding-right: 4px;
+    }
+
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@-webkit-keyframes slice-back-11 {
+    0% {
+        width: 100%;
+        left: -2px;
+    }
+
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 8px;
+        left: -27px;
+    }
+}
+
+@keyframes slice-back-11 {
+    0% {
+        width: 100%;
+        left: -2px;
+    }
+
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 8px;
+        left: -27px;
+    }
+}
+
+@-webkit-keyframes firework-back-11 {
+    0% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+}
+
+@keyframes firework-back-11 {
+    0% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+}

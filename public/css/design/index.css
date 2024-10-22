@@ -1,0 +1,13 @@
+nav {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section {
+    padding: 30px;
+}
+
+h1 {
+    font-size: 4rem;
+}
