@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://laravel.com" target="_blank"><img loading="lazy" src="https://media.discordapp.net/attachments/1128167024917483711/1298417424550334464/imagotipo-DuoTone.png?ex=67197cf5&is=67182b75&hm=0bae363283559739319edfa79c4b4c7bf941243cf062af564f5031360ad0b948&=&format=webp&quality=lossless&width=1440&height=255" width="400" alt="Laravel Logo"></a>
+<a href="https://alupeer.com" target="_blank"><img loading="lazy" src="https://media.discordapp.net/attachments/1128167024917483711/1298417424550334464/imagotipo-DuoTone.png?ex=67197cf5&is=67182b75&hm=0bae363283559739319edfa79c4b4c7bf941243cf062af564f5031360ad0b948&=&format=webp&quality=lossless&width=1440&height=255" width="400" alt="Laravel Logo"></a>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 Com um sistema intuitivo de busca, você pode encontrar rapidamente produtos que atendem às suas necessidades, desde equipamentos de camping e ferramentas até itens de decoração e tecnologia.
 
-##Variedade de Produtos:
+## Variedade de Produtos:
 
 Nossa plataforma oferece uma ampla gama de categorias de produtos, garantindo que você sempre encontre o que precisa, quando precisa.
 
@@ -30,17 +30,22 @@ Na Alupeer, priorizamos a segurança dos nossos usuários. Implementamos medidas
 Nossa equipe de suporte está sempre disponível para ajudar com qualquer dúvida ou problema, garantindo uma experiência de aluguel tranquila e satisfatória.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+
 ## Licença de Uso da Plataforma Alupeer📜
 
 Alupeer LLC Copyright (C) 2024
+
+## =======
 
 =======
---
+
+> > > > > > > c62ff0413bdf2edee25d6eab6d96ea5ed65fe52f
 
 ## Licença de Uso da Plataforma Alupeer📜
 
 Alupeer LLC Copyright (C) 2024
 
->>>>>>> c163d5c48ff4f8dbb0bf3afd6c26bcd55f961d0a
-Ao utilizar a plataforma Alupeer, você concorda em cumprir os termos e condições estabelecidos nesta Licença de Uso. Esta Licença rege o uso de todos os serviços oferecidos pela Alupeer.
-Esta Licença será regida e interpretada de acordo com as leis do Brasil. Qualquer disputa decorrente desta Licença será resolvida nos tribunais competentes do Brasil.
+> > > > > > > c163d5c48ff4f8dbb0bf3afd6c26bcd55f961d0a
+> > > > > > > Ao utilizar a plataforma Alupeer, você concorda em cumprir os termos e condições estabelecidos nesta Licença de Uso. Esta Licença rege o uso de todos os serviços oferecidos pela Alupeer.
+> > > > > > > Esta Licença será regida e interpretada de acordo com as leis do Brasil. Qualquer disputa decorrente desta Licença será resolvida nos tribunais competentes do Brasil.
