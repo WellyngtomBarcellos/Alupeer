@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="google" content="notranslate" />
-    <meta name="google-adsense-account" content="ca-pub-4207338093772179">
-
     <meta name="author" content="{{env('APP_NAME')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -43,10 +40,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/5a2e7b261b.js" crossorigin="anonymous"></script>
-    <script src="{{asset('js/notifyError.js')}}?v={{ time() }}"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4207338093772179"
-        crossorigin="anonymous"></script>
-
+    
     <title>Veja todas as Reservas</title>
 </head>
 

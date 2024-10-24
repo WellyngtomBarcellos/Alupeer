@@ -1,5 +1,14 @@
 /*
 |--------------------------------------------------------------------------
+| Verificação de step
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+/*
+|--------------------------------------------------------------------------
 | Altera Visualização de Seleção de datas na reserva
 |--------------------------------------------------------------------------
 */
@@ -96,6 +105,9 @@ $(document).ready(function () {
                 $('#popup_informations').html(`<div class="informate"></div>`)
             },
             success: (response) => {
+
+
+
                 let dateArray;
                 let optioners
 
@@ -124,23 +136,110 @@ $(document).ready(function () {
                     }).format(price);
 
 
-                    if (response.booking.reservado <= 1) {
-                        optioners = `
-                            <div class="optioner">
-                                <div class="btnss confirm">Confirmar</div>
-                                <div class="btnss deny">Cancelar</div>
-                            </div>`;
+
+
+
+
+
+
+
+
+
+
+                    let statusCheck = () => {
+                        const { reservado, devolvido } = response.booking;
+                    
+                        if (!devolvido) {
+                            return  reservado === 1 ? 'step-1' :
+                                    reservado === 2 ? 'step-2' :
+                                    reservado === 3 ? 'step-3' :
+                                    reservado === 4 ? 'step-4' : '';
+                        }
+                        return ''; 
+                    };
+
+                    let currentStep = statusCheck();
+
+                    switch (currentStep) {
+                        case 'step-1':
+                            console.log('Step 1 - Apenas agendado');
+                            optioners = `
+                                <div class="optioner">
+                                    <div class="btnss confirm">Confirmar</div>
+                                    <div class="btnss deny">Cancelar</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-2':
+                            console.log('Step 2 - Aceito pelo locador');
+                            optioners = `
+                                <div class="optioner">
+                                    <div class="btnss start">Reserva Confirmada</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-3':
+                            console.log('Step 3 - Finalizar e marcar como devolvido');
+                            optioners = `
+                                <div class="Sendback">
+                                    <div class="btnss devolver_btn">Marcar como devolvido</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-4':
+                            console.log('Step 4 - Em revisão');
+                            optioners = `
+                                <div class="Sendback">
+                                    <div class="btnss finalizada">Reserva finalizada</div>
+                                </div>`;
+                            break;
+                    
+                        default:
+                            optioners = `
+                                <div class="Sendback">
+                                    <div class="btnss finalizada">Reserva finalizada</div>
+                                </div>`;
+                            break;
                     }
 
-                    if (response.reviewStatus.switch == false) {
-                        optioners = `<div class="Sendback">
-                                        <div class="btnss devolver_btn">Marcar como devolvido</div>
-                                    </div>`
-                    } else {
-                        optioners = `<div class="Sendback">
-                                        <div class="compleeted">Pedido finalizado</div>
-                                    </div>`
+
+
+                    
+
+                    if (optioners) {
+                        $('#someContainer').html(optioners);
+                        $('.confirm').on('click', function() {
+                            console.log('Confirmar clicado');
+                        });
+                    
+                        $('.deny').on('click', function() {
+                            console.log('Cancelar clicado');
+                        });
+                    
+                        $('.devolver_btn').on('click', function() {
+                            console.log('Devolução marcada');
+                        });
                     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     $('#popup_informations').html(`
                         <div class="informate">
 
@@ -285,31 +384,70 @@ $(document).ready(function () {
                     }).format(price);
 
 
-                    if (response.booking.reservado <= 1) {
-                        optioners = `
-                            <div class="optioner">
-                                <div class="btnss confirm">Confirmar</div>
-                                <div class="btnss deny">Cancelar</div>
-                            </div>`;
+
+
+                    let statusCheck = () => {
+                        const { reservado, devolvido } = response.booking;
+                    
+                        if (!devolvido) {
+                            return  reservado === 1 ? 'step-1' :
+                                    reservado === 2 ? 'step-2' :
+                                    reservado === 3 ? 'step-3' :
+                                    reservado === 3 ? 'step-4' : ''
+                        }
+                        return ''; 
+                    };
+
+                    let currentStep = statusCheck();
+
+                    switch (currentStep) {
+                        case 'step-1':
+                            console.log('Step 1 - Apenas agendado');
+                            optioners = `
+                                <div class="optioner">
+                                    <div class="btnss deny">Cancelar</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-2':
+                            console.log('Step 2 - Aceito pelo locador');
+                            optioners = `
+                                <div class="optioner">
+                                    <div class="btnss start">Iniciar uso</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-3':
+                            console.log('Step 3 - Finalizar e marcar como devolvido');
+                            optioners = `
+                                <div class="Sendback">
+                                    <div class="btnss devolver_btn">Marcar como devolvido</div>
+                                </div>`;
+                            break;
+                    
+                        case 'step-4':
+                            console.log('Step 4 - Em revisão');
+                            optioners = `
+                                <div class="Sendback">
+                                    <div class="btnss finalizada">Reserva finalizada</div>
+                                </div>`;
+                            break;
+                    
+                        default:
+                            console.log('Step 5 - Avaliação');
+                            optioners = `<div class="Sendback">
+                                        <div class="reviewdata">Avaliar</div>
+                                    </div>`
+                            break;
                     }
 
 
-
-
-                    if (response.reviewStatus.switch) {
-                        optioners = `<div class="Sendback">
-                                        <div class="reviewdata">Avaliar produto</div>
-                                    </div>`
-                    } else {
                         if (response.reviewStatus.message == 'avaliado') {
                             optioners = `<div class="Sendback">
-                            <div class="compleeted">Pedido finalizado</div>
-                        </div>`
-                        } else {
-                            optioners = ''
+                                            <div class="compleeted">Pedido finalizado</div>
+                                        </div>`
                         }
 
-                    }
 
 
 
@@ -356,7 +494,6 @@ $(document).ready(function () {
                         </div>
 
                         <h2>Total: ${formattedPrice}</h2>
-
                         ${optioners}
 
                     </div>`);

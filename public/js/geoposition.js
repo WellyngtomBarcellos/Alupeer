@@ -90,7 +90,7 @@ $(document).ready(function () {
     |
     | Autoriza ou Nega a localização para entrega de produtos próximos
     |
-    */
+    
 
 
 
@@ -100,7 +100,7 @@ $(document).ready(function () {
             function () { errorCallback('/result') }
         );
     }
-
+*/
 
 
 

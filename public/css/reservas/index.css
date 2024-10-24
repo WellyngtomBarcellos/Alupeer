@@ -214,6 +214,14 @@ body {
     color: var(--blue);
     border: none;
 }
+.Sendback .finalizada{
+    color: white;
+    background: green;
+}
+.Sendback .finalizada:hover{
+    color: white;
+    background: green;
+}
 
 .Sendback .compleeted {
     position: absolute;

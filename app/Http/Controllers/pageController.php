@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\MeuEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+
 class pageController extends Controller
 {
 
@@ -45,7 +46,7 @@ class pageController extends Controller
                     'item' => $booking->item,
                 ];
 
-                $this->sendMail($dados,$booking->user->email);
+                $this->sendMail($dados, $booking->user->email);
 
                 return response()->json([
                     'success' => true,
@@ -109,7 +110,7 @@ class pageController extends Controller
                 $newBook->save();
 
 
-                $this->sendMail($dados,$booking->user->email);
+                $this->sendMail($dados, $booking->user->email);
 
                 return response()->json([
                     'success' => true,
@@ -163,17 +164,14 @@ class pageController extends Controller
 
 
 
-
-
         if ($dataConvertida->isPast()) {
-            if($registro->owner == Auth::id() && !$registro->devolvido){
+            if ($registro->owner == Auth::id() && !$registro->devolvido) {
                 return [
                     'success' => true,
                     'switch' => false,
                     'message' => 'Locatario sem marcação de devolução'
                 ];
-            }
-            else if($registro->devolvido){
+            } else if ($registro->devolvido) {
                 return [
                     'success' => true,
                     'switch' => true,
@@ -189,13 +187,9 @@ class pageController extends Controller
             return [
                 'success' => false,
                 'switch' => false,
-                'message' => 'SD/ STE/2 '
+                'message' => 'SD/ STE/2'
             ];
         }
-
-
-
-
     }
 
     /*-------------------------------------------
@@ -206,7 +200,7 @@ class pageController extends Controller
     public function returnBookin(Request $request)
     {
         $item = (int) $request->input('item');
-        $booking = Reservas::with('user', 'item', 'user_owner','img')
+        $booking = Reservas::with('user', 'item', 'user_owner', 'img')
             ->where('id', $item)
             ->first();
         if (!$booking) {
@@ -243,7 +237,8 @@ class pageController extends Controller
     | Retorna a View RESERVAS COM DADOS
     |
     |------------------------------------------*/
-    public function reservations() {
+    public function reservations()
+    {
         $user = Auth::user();
 
         // Subconsulta para obter o último ID de cada conversa
@@ -300,8 +295,18 @@ class pageController extends Controller
     private function formatDateInPortuguese(Carbon $date)
     {
         $months = [
-            1 => 'Janeiro', 2 => 'Fevereiro', 3 => 'Março', 4 => 'Abril', 5 => 'Maio', 6 => 'Junho',
-            7 => 'Julho', 8 => 'Agosto', 9 => 'Setembro', 10 => 'Outubro', 11 => 'Novembro', 12 => 'Dezembro'
+            1 => 'Janeiro',
+            2 => 'Fevereiro',
+            3 => 'Março',
+            4 => 'Abril',
+            5 => 'Maio',
+            6 => 'Junho',
+            7 => 'Julho',
+            8 => 'Agosto',
+            9 => 'Setembro',
+            10 => 'Outubro',
+            11 => 'Novembro',
+            12 => 'Dezembro'
         ];
 
         return $date->format('d') . ' de ' . $months[$date->format('n')] . ' de ' . $date->format('Y');
@@ -315,9 +320,8 @@ class pageController extends Controller
     | Função para enviar emails de confimação
     |
     |------------------------------------------*/
-    public function sendMail($dados,$email)
+    public function sendMail($dados, $email)
     {
-
         Mail::to($email)->send(new MeuEmail($dados));
     }
 
@@ -325,7 +329,8 @@ class pageController extends Controller
 
 
 
-    public function mail(){
+    public function mail()
+    {
         return view('emails.reserva-confirm');
     }
 
@@ -338,7 +343,8 @@ class pageController extends Controller
     | View de Documentação de Identidade
     |
     |------------------------------------------*/
-    public function documentationDesign(){
+    public function documentationDesign()
+    {
         return view('documentation');
     }
 
@@ -360,14 +366,14 @@ class pageController extends Controller
             'users',
             'questions' => function ($query) {
                 $query->orderBy('id', 'desc') // Ordena as perguntas por ID (maior para menor)
-                      ->with(['user', 'answers' => function ($query) {
-                          $query->orderBy('id', 'desc') // Ordena as respostas por ID (maior para menor)
-                                ->with('user');
-                      }]);
+                    ->with(['user', 'answers' => function ($query) {
+                        $query->orderBy('id', 'desc') // Ordena as respostas por ID (maior para menor)
+                            ->with('user');
+                    }]);
             }
         ])
-        ->where('token', $token)
-        ->first();
+            ->where('token', $token)
+            ->first();
 
         $imageLinks = [];
 
@@ -377,7 +383,6 @@ class pageController extends Controller
             }
 
             $createdAgo = $item->users->created_at->diffForHumans();
-
         }
 
         return view('produto', [
@@ -396,12 +401,13 @@ class pageController extends Controller
     | Retorna Notificações
     |
     |------------------------------------------*/
-    public function notification(){
+    public function notification()
+    {
         $loged = Auth::user()->id;
         $messages = ChMessage::where('to_id', $loged)
-                        ->where('seen', 0)
-                        ->with('user') // Inclui os dados do usuário remetente
-                        ->get();
+            ->where('seen', 0)
+            ->with('user') // Inclui os dados do usuário remetente
+            ->get();
 
         return response()->json($messages);
     }
@@ -414,14 +420,15 @@ class pageController extends Controller
     | Retorba alerta rotificações
     |
     |------------------------------------------*/
-    public function notifications(){
+    public function notifications()
+    {
         $loged = Auth::user()->id;
         $notify = ChMessage::where('to_id', $loged)
-                        ->where('seen', 0)
-                        ->with('user') // Inclui os dados do usuário remetente
-                        ->get();
+            ->where('seen', 0)
+            ->with('user') // Inclui os dados do usuário remetente
+            ->get();
 
-    return response()->json($notify);
+        return response()->json($notify);
     }
 
 
@@ -505,7 +512,6 @@ class pageController extends Controller
                 $see->save();
                 return response()->json(['success' => true, 'message' => 'Comentário adicionado com sucesso!']);
             }
-
         } else {
             return response()->json(['success' => false, 'message' => 'Item não encontrado.'], 404);
         }
@@ -588,10 +594,8 @@ class pageController extends Controller
     | Retorna view Politicas e privacidade
     |
     |------------------------------------------*/
-    public function politics(){
+    public function politics()
+    {
         return view('politicas');
     }
-
-
-
 }
