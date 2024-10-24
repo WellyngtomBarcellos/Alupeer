@@ -111,6 +111,7 @@ body {
     height: 100dvh;
     z-index: 9999999999999;
     border-left: 1px solid var(--colorBlack_);
+    border-top: 1px solid var(--colorBlack_);
 }
 
 .header_ {

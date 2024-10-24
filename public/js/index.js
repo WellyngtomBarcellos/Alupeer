@@ -33,18 +33,18 @@ $(document).ready(function () {
         var option = $(this).closest('.card_item').find('.option');
         var dataItem = option.data('item');
         $('.option').css('display', 'none');
-        option.css('display', 'flex');
+        option.slideDown(100);
     });
     $(document).on('click', function () {
-        $('.option').css('display', 'none');
+        $('.option').slideUp();
         $('#Option').css('display', 'none');
         $('#Notification_list').css('display', 'none');
     });
     $('.close_listing').on('click', function () {
-        $('.listing').hide()
+        $('.listing').slideUp(100)
     });
     $('.more_anounce').on('click', function () {
-        $('.listing').show()
+        $('.listing').slideDown(100)
     });
 });
 
@@ -73,7 +73,7 @@ $('.cancel_exclusion').on('click', function (event) {
 
 function deleteAnounce(id) {
     var popup = $('#popup')
-
+    $('.close_listing').click()
     popup.html(`
         <div class="main">
             <div class="headerring">
@@ -129,12 +129,14 @@ function cancel() {
 |
 */
 function deletePost(id) {
+    
     var popup = $('#popup')
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    
     $.ajax({
         url: "/user/anounce/delete",
         method: 'POST',
@@ -183,6 +185,7 @@ function shareLink(id) {
     tempInput.select();
     document.execCommand('copy');
     document.body.removeChild(tempInput);
+    $('.close_listing').click()
 }
 
 
@@ -204,6 +207,7 @@ function shareLink(id) {
 */
 
 function editAnounce(id) {
+    $('.close_listing').click()
     var popup = $('#popup');
     showLoader()
     posttoken = id
