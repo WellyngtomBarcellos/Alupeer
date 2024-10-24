@@ -17,7 +17,7 @@
 
 Com um sistema intuitivo de busca, você pode encontrar rapidamente produtos que atendem às suas necessidades, desde equipamentos de camping e ferramentas até itens de decoração e tecnologia.
 
-## Variedade de Produtos:
+## Variedade de Produtos: 
 
 Nossa plataforma oferece uma ampla gama de categorias de produtos, garantindo que você sempre encontre o que precisa, quando precisa.
 
