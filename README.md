@@ -29,23 +29,10 @@ Na Alupeer, priorizamos a segurança dos nossos usuários. Implementamos medidas
 
 Nossa equipe de suporte está sempre disponível para ajudar com qualquer dúvida ou problema, garantindo uma experiência de aluguel tranquila e satisfatória.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 ## Licença de Uso da Plataforma Alupeer📜
 
 Alupeer LLC Copyright (C) 2024
-
-## =======
-
-=======
-
-> > > > > > > c62ff0413bdf2edee25d6eab6d96ea5ed65fe52f
-
-## Licença de Uso da Plataforma Alupeer📜
-
-Alupeer LLC Copyright (C) 2024
-
-> > > > > > > c163d5c48ff4f8dbb0bf3afd6c26bcd55f961d0a
-> > > > > > > Ao utilizar a plataforma Alupeer, você concorda em cumprir os termos e condições estabelecidos nesta Licença de Uso. Esta Licença rege o uso de todos os serviços oferecidos pela Alupeer.
-> > > > > > > Esta Licença será regida e interpretada de acordo com as leis do Brasil. Qualquer disputa decorrente desta Licença será resolvida nos tribunais competentes do Brasil.
+Ao utilizar a plataforma Alupeer, você concorda em cumprir os termos e condições estabelecidos nesta Licença de Uso. Esta Licença rege o uso de todos os serviços oferecidos pela Alupeer.
+Esta Licença será regida e interpretada de acordo com as leis do Brasil. Qualquer disputa decorrente desta Licença será resolvida nos tribunais competentes do Brasil.
