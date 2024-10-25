@@ -81,7 +81,7 @@
             </a>
         </div>
         <div class="siding">
-            <img loading="lazy" src="{{asset('assets/logo/Icon-Primary.png')}}" height="30px" alt="">
+            <img loading="lazy" src="{{asset('assets/logo/Icon-Primary.png')}}?v={{time()}}" height="30px" alt="">
         </div>
     </footer>
 
