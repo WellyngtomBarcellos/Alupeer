@@ -292,6 +292,12 @@ function closeReservation() {
     $('.info_total').css('display', 'none')
     $('body').css('overflow', 'auto')
     $('.headering').css('display', 'block')
-    $('.flutter_mobile').css('display', 'flex')
+
+    var largura = $(document).width();
+
+    
+    if (largura <= 700) {
+        $('.flutter_mobile').css('display', 'flex')
+    }
 }
 
