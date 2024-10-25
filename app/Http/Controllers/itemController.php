@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Reservas;
 use App\Models\User;
 use App\Models\ChMessage;
+use App\Models\Produts;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\pageController;
 
@@ -21,7 +22,8 @@ class itemController extends Controller
     | Adiciona itens ao carrinho
     |
     |--------------------------------------------------------*/
-    public function addCart(Request $request){
+    public function addCart(Request $request)
+    {
         $item = $request->input('item');
         $cart = session('cart', []);
         array_push($cart, $item);
@@ -36,12 +38,22 @@ class itemController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------------------
     |
     | retorna a view Carrinho com informações adicionadas
     |
     |--------------------------------------------------------*/
-    public function carrinho(Request $request) {
+    public function carrinho(Request $request)
+    {
         $cart = session('cart', []);
 
         if (!is_array($cart)) {
@@ -103,6 +115,20 @@ class itemController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------------------
     |
     | Remover do Carrinho
@@ -142,19 +168,52 @@ class itemController extends Controller
 
 
 
+
+
+
+
+
+
+
+
     /*-------------------------------------------------------
     |
     | formata Datas em nomes
     |
     |--------------------------------------------------------*/
 
-    private function formatDateInPortuguese(Carbon $date) {
+    private function formatDateInPortuguese(Carbon $date)
+    {
         $months = [
-            1 => 'Janeiro', 2 => 'Fevereiro', 3 => 'Março', 4 => 'Abril', 5 => 'Maio', 6 => 'Junho',
-            7 => 'Julho', 8 => 'Agosto', 9 => 'Setembro', 10 => 'Outubro', 11 => 'Novembro', 12 => 'Dezembro'
+            1 => 'Janeiro',
+            2 => 'Fevereiro',
+            3 => 'Março',
+            4 => 'Abril',
+            5 => 'Maio',
+            6 => 'Junho',
+            7 => 'Julho',
+            8 => 'Agosto',
+            9 => 'Setembro',
+            10 => 'Outubro',
+            11 => 'Novembro',
+            12 => 'Dezembro'
         ];
         return $date->format('d') . ' de ' . $months[$date->format('n')] . ' de ' . $date->format('Y');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -184,7 +243,7 @@ class itemController extends Controller
             }
         }
         foreach ($id_data as $itemId => $datesJson) {
-            $item_total = Item::with('users','images')->where('id', $itemId)->first();
+            $item_total = Item::with('users', 'images')->where('id', $itemId)->first();
             if ($item_total) {
                 $itemsData[] = [
                     'item_id' => $itemId,
@@ -199,7 +258,7 @@ class itemController extends Controller
             $itemOwner = $item['item_data']['users'];
             if ($loggedUserId !== $itemContent['owner']) {
                 try {
-                    $getOwner = Item::with('images','users')
+                    $getOwner = Item::with('images', 'users')
                         ->where('id', $item)->first();
                     $user_owner = $getOwner->users;
 
@@ -262,18 +321,30 @@ class itemController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------
     |
     | Retorna datas em array da tabela
     |
     |------------------------------------------*/
-    public function storeDates(Request $request) {
+    public function storeDates(Request $request)
+    {
         $item = $request->input('id');
         if (!$item) {
             return response()->json(['error' => 'Item não fornecido'], 400);
         }
         $datesRecords = Reservas::where('item_id', $item)
-        ->where(function ($query) {$query->where('reservado', 1)->orWhere('reservado', 2)->orWhere('reservado', 3);})->get();
+            ->where(function ($query) {
+                $query->where('reservado', 1)->orWhere('reservado', 2)->orWhere('reservado', 3);
+            })->get();
         $allDates = [];
         foreach ($datesRecords as $record) {
             if ($record->date) {
@@ -292,6 +363,19 @@ class itemController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------------
     |
     | Retorna view Principal com os anúncios disponivel
@@ -303,6 +387,7 @@ class itemController extends Controller
         if ($user && !$user->hasVerifiedEmail()) {
             return redirect()->route('verification.notice')->with('status', 'Please verify your email address.');
         }
+
         $items = Item::with(['reviews', 'images', 'users'])
             ->orderBy('id', 'desc')
             ->where('reservado', false)
@@ -325,11 +410,12 @@ class itemController extends Controller
     | Retorna items em array
     |
     |------------------------------------------*/
-    public function dataReceive(Request $request) {
+    public function dataReceive(Request $request)
+    {
         $items = Item::with(['reviews', 'images', 'users'])
-        ->orderBy('id', 'desc')
-        ->where('reservado',false)
-        ->paginate(8);
+            ->orderBy('id', 'desc')
+            ->where('reservado', false)
+            ->paginate(8);
         return response()->json($items);
     }
 
@@ -350,15 +436,30 @@ class itemController extends Controller
     | Pesquisa
     |
     |------------------------------------------*/
-    public function searchItem(Request $request) {
+    public function searchItem(Request $request)
+    {
         $query = $request->input('query');
         $items = Item::with(['reviews', 'images', 'users'])
-        ->where('name_item', 'LIKE', '%' . $query . '%')
-        ->orderBy('id', 'desc')
-        ->where('reservado',false)
-        ->paginate(8);
+            ->where('name_item', 'LIKE', '%' . $query . '%')
+            ->orderBy('id', 'desc')
+            ->where('reservado', false)
+            ->paginate(8);
         return response()->json($items);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -371,14 +472,15 @@ class itemController extends Controller
     | Retorna os items com Localização próximas
     |
     |------------------------------------------*/
-    public function locateNear(Request $request) {
+    public function locateNear(Request $request)
+    {
 
         $perPage = 8;
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
         $page = $request->input('page', 1);
         $items = Item::with(['reviews', 'images', 'users'])
-            ->where('reservado',false)
+            ->where('reservado', false)
             ->orderBy('id', 'desc')
             ->get();
         $filteredItems = [];
@@ -417,7 +519,8 @@ class itemController extends Controller
     | Retorna os items com Localização Local
     |
     |------------------------------------------*/
-    public function localResults(Request $request) {
+    public function localResults(Request $request)
+    {
         $page = $request->input('page', 1);
         $perPage = 8;
         $category = $request->input('category');
@@ -425,9 +528,9 @@ class itemController extends Controller
         $longitude = $request->input('longitude');
 
         $items = Item::with(['reviews', 'images', 'users'])
-                    ->where('category', $category)
-                    ->where('reservado',false)
-                    ->get();
+            ->where('category', $category)
+            ->where('reservado', false)
+            ->get();
 
         $filteredItems = [];
 
@@ -467,13 +570,14 @@ class itemController extends Controller
     | Retorna todos os Items
     |
     |------------------------------------------*/
-    public function geralResult(Request $request) {
+    public function geralResult(Request $request)
+    {
         $page = 8;
         $category = $request->input('category');
         $items = Item::with(['reviews', 'images', 'users'])
-                            ->where('category',$category)
-                            ->where('reservado',false)
-                            ->paginate($page);
+            ->where('category', $category)
+            ->where('reservado', false)
+            ->paginate($page);
         return response()->json($items);
     }
 
@@ -490,14 +594,15 @@ class itemController extends Controller
     | Função para calcular Cordenadas em Raio de alcance
     |
     |------------------------------------------*/
-    private function calcularDistancia($lat1, $lon1, $lat2, $lon2) {
+    private function calcularDistancia($lat1, $lon1, $lat2, $lon2)
+    {
 
         $R = 6371; // Raio da Terra em km
         $dLat = deg2rad($lat2 - $lat1);
         $dLon = deg2rad($lon2 - $lon1);
         $a = sin($dLat / 2) * sin($dLat / 2) +
-             cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
-             sin($dLon / 2) * sin($dLon / 2);
+            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            sin($dLon / 2) * sin($dLon / 2);
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
         $distancia = $R * $c; // Distância em km
         return $distancia;
@@ -526,11 +631,11 @@ class itemController extends Controller
         // Obtém os itens do usuário
         $items = Item::with(['reviews', 'images', 'users'])
             ->where('owner', $user->id)
-            ->where('reservado',0)
+            ->where('reservado', 0)
             ->get();
 
         // Calcula a classificação média
-        $rating = number_format($user->averageRating(),1);
+        $rating = number_format($user->averageRating(), 1);
         $reviews = $user->reviews()->count();
         return view('anuncios', [
             'items' => $items,
@@ -552,15 +657,16 @@ class itemController extends Controller
     | Função para "Deletar" "Desativar" Anuncio
     |
     |------------------------------------------*/
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
 
         $token = $request->input('id');
         $loged = Auth::user()->id;
-        $item  = Item::where('token',$token)
-                    ->where('owner',$loged)
-                    ->first();
+        $item  = Item::where('token', $token)
+            ->where('owner', $loged)
+            ->first();
 
-        if ($item->owner == $loged){
+        if ($item->owner == $loged) {
             $item->reservado = 1;
             $item->save();
             return response()->json(['success' => true]);
@@ -583,7 +689,8 @@ class itemController extends Controller
     | retorna item do filtro com Localização
     |
     |------------------------------------------*/
-    public function locateLocal(Request $request) {
+    public function locateLocal(Request $request)
+    {
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
         $minPrice = $request->input('minPrice');
@@ -597,14 +704,14 @@ class itemController extends Controller
             $categories = explode(',', $categories);
         }
 
-        $categories = array_filter($categories, function($value) {
+        $categories = array_filter($categories, function ($value) {
             return !empty($value);
         });
 
         $query = Item::with(['reviews', 'images', 'users'])
-                    ->whereBetween('price', [$minPrice, $maxPrice])
-                    ->where('reservado',false)
-                    ->orderBy('id', 'desc');
+            ->whereBetween('price', [$minPrice, $maxPrice])
+            ->where('reservado', false)
+            ->orderBy('id', 'desc');
 
         if (!empty($categories)) {
             $query->whereIn('category', $categories);
@@ -649,7 +756,8 @@ class itemController extends Controller
     | retorna todos os itens do filtro
     |
     |------------------------------------------*/
-    public function locateAll(Request $request) {
+    public function locateAll(Request $request)
+    {
 
         $page = $request->input('page', 1);
         $perPage = 8;
@@ -664,13 +772,13 @@ class itemController extends Controller
             $categories = [];
         }
 
-        $categories = array_filter($categories, function($value) {
+        $categories = array_filter($categories, function ($value) {
             return !empty($value);
         });
 
         $query = Item::with(['reviews', 'images', 'users'])
             ->whereBetween('price', [$minPrice, $maxPrice])
-            ->where('reservado',false)
+            ->where('reservado', false)
             ->orderBy('id', 'desc');
 
         if (!empty($categories)) {
@@ -703,7 +811,8 @@ class itemController extends Controller
     | Rotorna dados do item para o chatify
     |
     |------------------------------------------*/
-    public function getDataChat(Request $request) {
+    public function getDataChat(Request $request)
+    {
         $owner = $request->input('id');
         $item = $request->input('item');
         $produto = Item::where('id', $item)

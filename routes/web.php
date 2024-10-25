@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\GoogleController;
 Route::get('/Bookin/make/devolvido', [AnounceController::class, 'getBack']);
 Route::get('review/send', [AnounceController::class, 'reviewSend']);
 
+
 Route::get('anounce/edit', [AnounceController::class, 'editAnounceView']);
 Route::get('tripple', function () {
     return view('popup');
@@ -44,7 +45,9 @@ Route::get('/politicas-privacidade', [pageController::class, 'politics'])->name(
 Route::get('/Bookin/data', [pageController::class, 'returnBookin'])->name('returnBookin');
 Route::post('/Bookin/data/delete-booking', [pageController::class, 'deleteBooking'])->name('deleteBooking');
 Route::post('/Bookin/data/accept-booking', [pageController::class, 'acceptBooking'])->name('acceptBooking');
-Route::get('/email/verify', function () {return view('auth.verify-email');})->middleware(['auth', 'verified'])->name('verification.notice');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware(['auth', 'verified'])->name('verification.notice');
 Route::get('/result/local', [itemController::class, 'locateNear'])->name('locateNear');
 Route::get('/produto/{token}', [pageController::class, 'index'])->name('produto.page');
 Route::get('/help', [pageController::class, 'helper'])->name('helper.page');
@@ -89,4 +92,4 @@ Route::middleware('auth')->group(function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
