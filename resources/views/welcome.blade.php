@@ -61,6 +61,7 @@
     <x-navbar :search="true"></x-navbar>
     @include('layouts.horizontal-category')
 
+    <h1 class="tittle_header">Últimos produtos</h1>
     <div id="filter_container">
         <div id="App">
             <x-ItemCard></x-ItemCard>

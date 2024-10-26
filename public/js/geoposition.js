@@ -57,7 +57,7 @@ $(document).ready(function () {
                     <p title="Título">${item.name_item}</p>
                 </div>
                 <div class="description_Detail">
-                    <a class="username" href="/user/${item.owner}">${item.users.name}</a>
+                    <!--<a class="username" href="/user/${item.owner}">${item.users.name}</a>-->
                     <p class="description_Price">R$${item.price}<span>/dia</span></p>
                 </div>
             </div>

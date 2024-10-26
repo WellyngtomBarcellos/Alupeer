@@ -28,14 +28,15 @@ body {
     width: clamp(30vw, 15rem, 500px);
     display: flex;
     flex-direction: column;
-    padding: 15px 30px 100px 15px;
-    border-radius: 10px;
-    border: 1px solid black;
+    padding: 15px 30px 120px 15px;
     z-index: 10;
     left: -5px;
     position: sticky;
     top: 0;
+    border-radius: 10px;
+    border: 1px solid #00000012;
 }
+
 
 .flutter-stick {
     padding: 10px;
@@ -80,7 +81,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 0;
-
+    border-top: 1px solid #00000012;
 }
 
 

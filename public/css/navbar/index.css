@@ -1,5 +1,4 @@
 #navbar_container {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.123);
     padding: 1.5rem;
     display: flex;
     align-items: center;
@@ -43,7 +42,6 @@ select {
     width: 100%;
     padding: 10px;
     display: none;
-
     justify-content: center;
 }
 
@@ -230,26 +228,23 @@ a {
 .search_icon {
     padding: 10px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 100px;
     transform: all .2s ease;
-    border: 1px solid transparent;
-    border-bottom: 4px solid transparent;
 }
 
 .filter_btn:hover {
     background: var(--blue);
     color: var(--colorPrimary);
-    border: 1px solid var(--colorBlack);
-    border-bottom: 4px solid var(--colorBlack);
 }
 
 .center {
     display: flex;
     align-items: center;
     width: 500px;
-    padding: 0px 5px;
-    background: var(--colorSecond);
-    border-radius: 10px;
+    padding: 0px 15px;
+    border-radius: 100px;
+    border: 1px solid var(--colorBlack_);
+    box-shadow: 0 3px 3px #00000019;
 }
 
 .center input::placeholder {
@@ -262,7 +257,7 @@ a {
     outline: none;
     width: 100%;
     padding: 10px;
-    background: var(--colorSecond);
+    background: transparent;
     color: var(--colorBlack);
     border-radius: 10px;
 
@@ -278,27 +273,27 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--colorBlack_);
+    background: var(--blue);
+    color: var(--colorPrimary);
 }
 
 .loginSide {
     cursor: pointer;
     padding: 5px;
     border-radius: 10px;
-    background: var(--blue);
-    color: var(--colorPrimary);
-    border: 1px solid var(--colorBlack);
-    border-bottom: 4px solid var(--colorBlack);
+
+    color: var(--colorBlack);
 }
 
 .loginSide span {
-    font-weight: bold;
+    font-weight: 550;
     padding: 0 10px;
+    font-size: .8rem;
 }
 
 .loginSide:hover {
     background: var(--yellow);
-    color: var(--colorBlack);
+    color: var(--colorPrimary);
 }
 
 .picture_profile img {
@@ -524,6 +519,7 @@ a {
     top: 0;
     z-index: 99;
     background: var(--colorPrimary);
+    box-shadow: 0 8px 10px #00000012;
 }
 
 #Filter {

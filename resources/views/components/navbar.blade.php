@@ -34,8 +34,6 @@
 
     <div class="side">
 
-
-
         <a class="Cart_div" href="{{route('carrinho')}}">
             @if (session('cart') && count(session('cart')) > 0)
             <span class="show_cart">
@@ -56,7 +54,6 @@
             <x-loged-User-picture style="width:35px;height:35px">
             </x-loged-User-picture>
         </div>
-
 
         <div id="Option">
             <li><a href="/user/{{Auth::user()->id}}">
@@ -98,15 +95,18 @@
             </li>
 
         </div>
+        
     </div>
 
     @else
+
     <span class="side loginSide lbtn">
-        <span>Login</span>
+        <span>Entrar/Registrar</span>
         <div class="picture_profile">
             <ion-icon name="person"></ion-icon>
         </div>
     </span>
+
     @endauth
 </nav>
 
@@ -121,7 +121,7 @@
     </div>
 </div>
 @endif
-<audio id="notification-sound" src="{{asset('assets/sounds/lugsong.mp3')}}"></audio>
+
 
 
 
@@ -150,6 +150,7 @@ $(document).ready(function() {
             }
         });
     });
+
     $('.lbtn').on('click', function() {
         $('body').css('overflow', 'hidden')
         var container_login = $('#Login')
