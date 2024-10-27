@@ -15,7 +15,7 @@
         </div>
 
         <div class="lugator">
-            <h3>Lugator</h3>
+            <h3>{{env('APP_NAME')}}</h3>
             <a href="/"><span>Trabalhe com a gente</span></a>
         </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="footer_container">
 
         <div class="side">
-            <span>©2024 Lugator LLC</span>
+            <span>©2024 {{env('APP_NAME')}} LLC</span>
             <ul>
                 <li><a href="/politicas-privacidade">•Termos</a></li>
                 <li><a href="/politicas-privacidade">•Privacidade</a></li>

@@ -75,8 +75,9 @@
     <form action="">
         <div class="container_filtragen">
             <div class="heaader">
-                <i class="fa-solid fa-xmark close_filterlist"></i>
-                <span class="filter_search">Filtrar</span>
+                <ion-icon class="close_filterlist" name="close-outline"></ion-icon>
+                <span class="filter_search"><ion-icon name="layers-outline"></ion-icon> Filtrar</span>
+                
             </div>
             <div class="container_fil">
 

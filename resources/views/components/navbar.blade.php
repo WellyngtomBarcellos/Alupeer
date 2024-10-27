@@ -27,6 +27,7 @@
         <ion-icon name="search-outline" class="search_icon"></ion-icon>
         <input type="text" id="search_input" placeholder="oquê procura ?" autocomplete="off">
         <i class="fa-solid fa-sliders filter_btn"></i>
+        
     </div>
     @endif
 

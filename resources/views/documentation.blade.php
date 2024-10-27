@@ -48,7 +48,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4207338093772179"
         crossorigin="anonymous"></script>
 
-    <title>Diretrizes de Desgin | Lugator para Designers</title>
+    <title>Diretrizes de Desgin | {{env('APP_NAME')}} para Designers</title>
 </head>
 
 <body>

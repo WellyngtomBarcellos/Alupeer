@@ -403,20 +403,32 @@ a {
     overflow: auto;
     width: 100%;
 }
+.close_filterlist{
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+.close_filterlist:hover{
+    background: var(--colorBlack_);
+    color: var(--colorPrimary);
+    border-radius: 100px;
+
+}
 
 .filter_search {
     padding: 10px 30px;
-    color: var(--colorPrimary);
+    color: var(--colorBlack);
     border-radius: 10px;
     border: 1px solid var(--colorBlack);
-    border-bottom: 5px solid var(--colorBlack);
-    background: var(--blue);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .filter_search:hover {
-    background: var(--yellow);
-    color: var(--colorBlack);
+    background: var(--colorBlack);
+    color: var(--colorSecond);
 }
 
 
@@ -836,6 +848,7 @@ a {
 
 .container_loged {
     width: 700px;
+    max-height: 95vh;
     padding: 150px 30px 50px 30px;
     background: var(--colorPrimary);
     color: var(--colorPrimary);
@@ -845,6 +858,7 @@ a {
     justify-content: center;
     align-items: center;
     position: relative;
+    text-align: center;
 }
 
 .google_login {
