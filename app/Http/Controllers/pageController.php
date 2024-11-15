@@ -192,6 +192,28 @@ class pageController extends Controller
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------
     |
     | Retorna reservas em array
@@ -286,6 +308,19 @@ class pageController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------
     |
     | Função para Formatar data DD/MM/AAAA em
@@ -315,6 +350,17 @@ class pageController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------
     |
     | Função para enviar emails de confimação
@@ -324,15 +370,16 @@ class pageController extends Controller
     {
         Mail::to($email)->send(new MeuEmail($dados));
     }
-
-
-
-
-
     public function mail()
     {
         return view('emails.reserva-confirm');
     }
+
+
+
+
+
+
 
 
 
@@ -347,6 +394,18 @@ class pageController extends Controller
     {
         return view('documentation');
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

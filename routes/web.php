@@ -5,9 +5,11 @@ use App\Http\Controllers\itemController;
 use App\Http\Controllers\AnounceController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\pageController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeCheckoutController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\BitcoinController;
 
 
 
@@ -19,7 +21,6 @@ Route::get('anounce/edit', [AnounceController::class, 'editAnounceView']);
 Route::get('tripple', function () {
     return view('popup');
 });
-
 
 
 Route::post('user/edit/anounce/name', [AnounceController::class, 'EditName']);
@@ -89,7 +90,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/alugar/produtos/success', [AnounceController::class, 'create'])->name('anouce.create');
     Route::get('/locador/anounce/done', [AnounceController::class, 'wellcome'])->name('wellcome.done');
 });
+Route::get('/mp', [CheckoutController::class, 'view'])->name('checkout.create');
+Route::get('/mp-p', [CheckoutController::class, 'createPreference'])->name('createPreference');
 
-
+Route::get('/MercadoPago/Callback/Success/{id}/{saldo}', [CheckoutController::class, 'successCallback'])->name('success-callback');
 
 require __DIR__ . '/auth.php';
