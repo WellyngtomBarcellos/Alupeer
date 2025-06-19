@@ -252,6 +252,7 @@ class itemController extends Controller
                 ];
             }
         }
+
         foreach ($itemsData as $item) {
             $itemDatas = $item['dates'];
             $itemContent = $item['item_data'];
@@ -305,8 +306,9 @@ class itemController extends Controller
                     session()->forget('cart');
 
                     return response()->json(['success' => true, 'message' => 'Reserva Agendada']);
+
                 } catch (\Exception $e) {
-                    return response()->json(['success' => false, 'message' => 'Erro ao processar a reserva.'], 500);
+                    return response()->json(['error' => $e], 500);
                 }
             }
         }

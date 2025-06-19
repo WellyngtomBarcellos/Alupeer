@@ -18,16 +18,18 @@ class Item extends Model
         'float',
         'long',
         'lat',
+        'reservado',
         'token',
     ];
     public function reviews() // Um item pode ter muitas revisões
     {
         return $this->hasMany(Review::class);
     }
-    public function images() // Um item pode ter muitas imagens
+    public function images()
     {
-        return $this->hasMany(Image::class); // O nome do método foi corrigido para plural
+        return $this->hasMany(Image::class, 'item_id', 'id');
     }
+
     public function users() // Um item pode ter muitas imagens
     {
         return $this->belongsTo(User::class, 'owner'); // O nome do método foi corrigido para plural

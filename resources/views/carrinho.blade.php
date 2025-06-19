@@ -92,7 +92,7 @@
             <div class="item_container">
 
                 <div class="container_mainer">
-                    <a href="/produto/{{$itemData['item']->id}}">
+                    <a href="/produto/{{$itemData['item']->token}}">
                         <div class="images_container">
                             @if (count($itemData['images']) > 0)
                             <img src="{{ $itemData['images'][0]->link }}" alt="Image" style="max-width: 100px;">

@@ -244,7 +244,7 @@ class AnounceController extends Controller
             'float' => $float,
             'lat' => $lat, // Substitua pelos valores corretos de latitude
             'long' => $long, // Substitua pelos valores corretos de longitude
-            'token' => hash('md5', $token), // Substitua pelos valores corretos de longitude
+            'token' => hash('md5', $token),
         ]);
 
         foreach ($imageLinks as $link) {

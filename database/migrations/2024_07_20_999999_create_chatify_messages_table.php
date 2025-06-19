@@ -19,6 +19,7 @@ class CreateChatifyMessagesTable extends Migration
             $table->bigInteger('to_id');
             $table->string('body',5000)->nullable();
             $table->string('attachment')->nullable();
+            $table->integer('item');
             $table->boolean('seen')->default(false);
             $table->timestamps();
         });

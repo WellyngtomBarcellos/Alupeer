@@ -443,7 +443,6 @@ class pageController extends Controller
 
             $createdAgo = $item->users->created_at->diffForHumans();
         }
-
         return view('produto', [
             'item' => $item,
             'createdAgo' => $createdAgo,
