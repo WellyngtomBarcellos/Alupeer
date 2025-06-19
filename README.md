@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://alupeer.com" target="_blank"><img loading="lazy" src="https://media.discordapp.net/attachments/1128167024917483711/1298417424550334464/imagotipo-DuoTone.png?ex=67197cf5&is=67182b75&hm=0bae363283559739319edfa79c4b4c7bf941243cf062af564f5031360ad0b948&=&format=webp&quality=lossless&width=1440&height=255" width="400" alt="Laravel Logo"></a>
+<a href="https://alupeer.com" target="_blank"><img loading="lazy" src="https://i.ibb.co/sJsfqkYM/imagotipo-Duo-Tone-Second.png" width="400" alt="Laravel Logo"></a>
 </p>
 
 <p align="center">
