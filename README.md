@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://alupeer.com" target="_blank"><img loading="lazy" src="https://i.ibb.co/sJsfqkYM/imagotipo-Duo-Tone-Second.png" width="400" alt="Laravel Logo"></a>
+<a href="https://alupeer.com" target="_blank"><img loading="lazy" src="https://i.ibb.co/KcpXngkB/imagotipo-white.png" width="400" alt="Laravel Logo"></a>
 </p>
 
 <p align="center">
