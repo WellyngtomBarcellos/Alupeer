@@ -18,6 +18,46 @@ use Carbon\Carbon;
 class pageController extends Controller
 {
 
+    /*-------------------------------------------
+    |
+    | Status da reserva entre comprador e locador
+    |
+    |------------------------------------------*/
+    public function reservaBetween(Request $request)
+    {
+        $item = (int) $request->input('item');
+        $otherUser = (int) $request->input('user');
+        $auth = Auth::id();
+
+        if (!$item || !$otherUser || !$auth) {
+            return response()->json(['exists' => false]);
+        }
+
+        $booking = Reservas::where('item_id', $item)
+            ->where(function ($query) use ($auth, $otherUser) {
+                $query->where(function ($q) use ($auth, $otherUser) {
+                    $q->where('user_id', $auth)->where('owner', $otherUser);
+                })->orWhere(function ($q) use ($auth, $otherUser) {
+                    $q->where('owner', $auth)->where('user_id', $otherUser);
+                });
+            })
+            ->whereIn('reservado', [1, 2, 3, 4, 5])
+            ->orderByDesc('id')
+            ->first();
+
+        if (!$booking) {
+            return response()->json(['exists' => false]);
+        }
+
+        return response()->json([
+            'exists' => true,
+            'id' => $booking->id,
+            'status' => (int) $booking->reservado,
+            'i_am_owner' => $auth === (int) $booking->owner,
+        ]);
+    }
+
+
 
 
     /*-------------------------------------------

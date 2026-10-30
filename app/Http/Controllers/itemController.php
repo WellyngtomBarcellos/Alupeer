@@ -238,7 +238,11 @@ class itemController extends Controller
         if (is_array($dates)) {
             foreach ($dates as $itemData) {
                 foreach ($itemData as $itemId => $formattedDates) {
-                    $id_data[$itemId] = json_encode($formattedDates);
+                    $decoded = is_string($formattedDates)
+                        ? json_decode($formattedDates, true)
+                        : $formattedDates;
+
+                    $id_data[$itemId] = json_encode(is_array($decoded) ? $decoded : []);
                 }
             }
         }
@@ -265,7 +269,7 @@ class itemController extends Controller
 
                     $reserva = new Reservas();
                     $reserva->item_id = $item['item_id'];
-                    $reserva->date = $itemDatas;
+                    $reserva->date = json_encode($itemDatas);
                     $reserva->user_id = $loggedUserId;
                     $reserva->owner = $itemOwner['id'];
                     $reserva->reservado = 1;

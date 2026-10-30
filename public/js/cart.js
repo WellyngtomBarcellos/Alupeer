@@ -28,6 +28,13 @@ $('.options_container').on('click', function () {
                 $this.closest('.item_container').remove();
                 $(`.informate[data-id="${itemId}"]`).remove();
 
+                // Mantém o meta do carrinho sincronizado
+                try {
+                    var cartCountMeta = JSON.parse($('meta[name="cart_count"]').attr('content')) || [];
+                    cartCountMeta.pop();
+                    $('meta[name="cart_count"]').attr('content', JSON.stringify(cartCountMeta));
+                } catch (e) {}
+
                 // Atualiza a meta tag com os dados atualizados
                 var updatedCart = JSON.stringify(response.cart); // Converte o carrinho atualizado para JSON
                 $('meta[name="cart"]').attr('content', updatedCart);

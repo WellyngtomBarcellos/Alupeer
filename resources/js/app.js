@@ -1,5 +1,5 @@
 import './bootstrap';
-require('./flatpickr-setup');
+import './flatpickr-setup';
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;

@@ -219,13 +219,6 @@ $(document).ready(function () {
                             $(this).addClass('ButtonLoading');
                             $(this).html(`<span class="loaderine"></span>`);
 
-                            $('.show_cart').show();
-
-                            $('.cart_num').text(function (i, text) {
-                                var newValue = parseInt(text) + 1;
-                                $(this).text(newValue);
-                            });
-
                             addCart(JSON.stringify(dateslist), itemId);
                         });
                     }
@@ -247,20 +240,56 @@ $(document).ready(function () {
 
 /*
 |--------------------------------------------------------------------------
+|           Atualiza o contador do carrinho na navbar
+|--------------------------------------------------------------------------
+*/
+function updateCartBadge(add_quantity) {
+    var cartRaw = $('meta[name="cart_count"]').attr('content');
+    var cart;
+
+    try {
+        cart = JSON.parse(cartRaw) || [];
+    } catch (e) {
+        cart = [];
+    }
+    if (!Array.isArray(cart)) {
+        cart = [];
+    }
+
+    if (add_quantity > 0) {
+        for (var i = 0; i < add_quantity; i++) {
+            cart.push({});
+        }
+    } else {
+        for (var i = 0; i < Math.abs(add_quantity); i++) {
+            cart.pop();
+        }
+    }
+
+    $('meta[name="cart_count"]').attr('content', JSON.stringify(cart));
+
+    var $badge = $('.Cart_div .show_cart');
+    if ($badge.length === 0) {
+        $('.Cart_div').prepend('<span class="show_cart"><p class="cart_num"></p></span>');
+        $badge = $('.Cart_div .show_cart');
+    }
+
+    $badge.css('display', 'block');
+    $('.cart_num').text(cart.length);
+}
+
+/*
+|--------------------------------------------------------------------------
 |           Adiciona item no carrinho
 |--------------------------------------------------------------------------
 |
 |       Essa configuração cria uma reserva
 |       no carrinho de compras
-|
-|
 */
 
 function addCart(dates, item) {
 
     let dateInBook = ({ [item]: dates });
-
-
 
     $.ajax({
         url: '/addCart',
@@ -270,6 +299,9 @@ function addCart(dates, item) {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
         success: (response) => {
+            // Atualiza o contador do carrinho na navbar
+            updateCartBadge(1);
+
             $('.info_total').html('');
             $('.info_total').css('display', 'none');
             $('body').css('overflow', 'auto');

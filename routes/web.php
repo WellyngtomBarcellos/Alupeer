@@ -53,6 +53,7 @@ Route::get('/result/local', [itemController::class, 'locateNear'])->name('locate
 Route::get('/produto/{token}', [pageController::class, 'index'])->name('produto.page');
 Route::get('/help', [pageController::class, 'helper'])->name('helper.page');
 Route::get('/data/chat/informations', [itemController::class, 'getDataChat'])->name('chatData');
+Route::get('/reserva/between', [pageController::class, 'reservaBetween'])->name('reserva.between');
 Route::get('/success', [StripeCheckoutController::class, 'success'])->name('stripe.success');
 Route::get('/download', [DownloadController::class, 'download'])->name('file.download');
 Route::get('/filter-advanced/local', [itemController::class, 'locateLocal'])->name('filter.advanced');
