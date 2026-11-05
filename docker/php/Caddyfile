@@ -1,0 +1,33 @@
+{
+	frankenphp
+	auto_https off
+	admin off
+}
+
+{$SERVER_NAME:localhost} {
+	root * {$SERVER_ROOT:/app/public}
+
+	encode zstd br gzip
+
+	# Socket.IO (WebSocket + polling) -> node container
+	@socket_io path /socket.io/*
+	reverse_proxy @socket_io {$SOCKET_UPSTREAM:socket:3001} {
+		header_up Host {host}
+		header_up X-Real-IP {remote_host}
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Forwarded-Proto {scheme}
+		transport http {
+			keepalive 2m
+		}
+	}
+
+	php_server {
+		try_files {path} index.php
+		resolve_root_symlink
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}

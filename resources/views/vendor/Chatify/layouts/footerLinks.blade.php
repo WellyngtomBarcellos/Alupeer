@@ -1,15 +1,18 @@
-<script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
-<script >
-    // Gloabl Chatify variables from PHP to JS
+<script>
+    // Global Chatify variables from PHP to JS
     window.chatify = {
         name: "{{ config('chatify.name') }}",
         sounds: {!! json_encode(config('chatify.sounds')) !!},
         allowedImages: {!! json_encode(config('chatify.attachments.allowed_images')) !!},
         allowedFiles: {!! json_encode(config('chatify.attachments.allowed_files')) !!},
         maxUploadSize: {{ Chatify::getMaxUploadSize() }},
-        pusher: {!! json_encode(config('chatify.pusher')) !!},
-        pusherAuthEndpoint: '{{route("pusher.auth")}}'
+        socket: {
+            // Empty => same origin (Caddy/FrankenPHP proxies /socket.io/*)
+            url: {!! json_encode(config('chatify.socket.url')) !!},
+            token: @json(\App\Services\SocketChatifyMessenger::socketToken(Auth::id()))
+        }
     };
     window.chatify.allAllowedExtensions = chatify.allowedImages.concat(chatify.allowedFiles);
 </script>

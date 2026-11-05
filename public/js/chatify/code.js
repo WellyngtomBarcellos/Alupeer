@@ -27,24 +27,19 @@ const setMessengerId = (id) => $("meta[name=id]").attr("content", id);
 
 /**
  *-------------------------------------------------------------
- * Pusher initialization
+ * Socket.IO initialization
  *-------------------------------------------------------------
  */
-Pusher.logToConsole = chatify.pusher.debug;
-const pusher = new Pusher(chatify.pusher.key, {
-    encrypted: chatify.pusher.options.encrypted,
-    cluster: chatify.pusher.options.cluster,
-    wsHost: chatify.pusher.options.host,
-    wsPort: chatify.pusher.options.port,
-    wssPort: chatify.pusher.options.port,
-    forceTLS: chatify.pusher.options.useTLS,
-    authEndpoint: chatify.pusherAuthEndpoint,
+const socketOpts = {
+  transports: ["websocket", "polling"],
   auth: {
-    headers: {
-      "X-CSRF-TOKEN": csrfToken,
-    },
+    token: (window.chatify && chatify.socket && chatify.socket.token) || "",
   },
-});
+};
+const socket =
+  window.chatify && chatify.socket && chatify.socket.url
+    ? io(chatify.socket.url, socketOpts)
+    : io(socketOpts);
 /**
  *-------------------------------------------------------------
  * Re-usable methods
@@ -613,26 +608,24 @@ function cancelUpdatingAvatar() {
 
 /**
  *-------------------------------------------------------------
- * Pusher channels and event listening..
+ * Socket.IO channels and event listening..
  *-------------------------------------------------------------
  */
 
-// subscribe to the channel
-const channelName = "private-chatify";
-var channel = pusher.subscribe(`${channelName}.${auth_id}`);
-var clientSendChannel;
-var clientListenChannel;
+// Server joins us to private-chatify.{auth_id} + presence on connect.
+// clientSendChannel/clientListenChannel kept as thin helpers for the
+// existing trigger/listen call sites (Pusher -> Socket.IO).
+var channel = socket;
+var clientSendChannel = socket;
+var clientListenChannel = socket;
 
 function initClientChannel() {
-  if (getMessengerId()) {
-    clientSendChannel = pusher.subscribe(`${channelName}.${getMessengerId()}`);
-    clientListenChannel = pusher.subscribe(`${channelName}.${auth_id}`);
-  }
+  // Rooms are fixed per authenticated user; nothing to resubscribe.
 }
 initClientChannel();
 
 // Listen to messages, and append if data received
-channel.bind("messaging", function (data) {
+socket.on("messaging", function (data) {
   if (data.from_id == getMessengerId() && data.to_id == auth_id) {
     $(".messages").find(".message-hint").remove();
     messagesContainer.find(".messages").append(data.message);
@@ -651,7 +644,7 @@ channel.bind("messaging", function (data) {
 });
 
 // listen to typing indicator
-clientListenChannel.bind("client-typing", function (data) {
+socket.on("client-typing", function (data) {
   if (data.from_id == getMessengerId() && data.to_id == auth_id) {
     data.typing == true
       ? messagesContainer.find(".typing-indicator").show()
@@ -662,7 +655,7 @@ clientListenChannel.bind("client-typing", function (data) {
 });
 
 // listen to seen event
-clientListenChannel.bind("client-seen", function (data) {
+socket.on("client-seen", function (data) {
   if (data.from_id == getMessengerId() && data.to_id == auth_id) {
     if (data.seen == true) {
       $(".message-time")
@@ -674,7 +667,7 @@ clientListenChannel.bind("client-seen", function (data) {
 });
 
 // listen to contact item updates event
-clientListenChannel.bind("client-contactItem", function (data) {
+socket.on("client-contactItem", function (data) {
   if (data.to == auth_id) {
     if (data.update) {
       updateContactItem(data.from);
@@ -685,11 +678,11 @@ clientListenChannel.bind("client-contactItem", function (data) {
 });
 
 // listen on message delete event
-clientListenChannel.bind("client-messageDelete", function (data) {
+socket.on("client-messageDelete", function (data) {
   $("body").find(`.message-card[data-id=${data.id}]`).remove();
 });
 // listen on delete conversation event
-clientListenChannel.bind("client-deleteConversation", function (data) {
+socket.on("client-deleteConversation", function (data) {
   if (data.from == getMessengerId() && data.to == auth_id) {
     $("body").find(`.messages`).html("");
     $(".messages").find(".message-hint").show();
@@ -697,10 +690,7 @@ clientListenChannel.bind("client-deleteConversation", function (data) {
 });
 // -------------------------------------
 // presence channel [User Active Status]
-var activeStatusChannel = pusher.subscribe("presence-activeStatus");
-
-// Joined
-activeStatusChannel.bind("pusher:member_added", function (member) {
+socket.on("member_added", function (member) {
   setActiveStatus(1);
   $(".messenger-list-item[data-contact=" + member.id + "]")
     .find(".activeStatus")
@@ -711,7 +701,7 @@ activeStatusChannel.bind("pusher:member_added", function (member) {
 });
 
 // Leaved
-activeStatusChannel.bind("pusher:member_removed", function (member) {
+socket.on("member_removed", function (member) {
   setActiveStatus(0);
   $(".messenger-list-item[data-contact=" + member.id + "]")
     .find(".activeStatus")
@@ -728,11 +718,27 @@ document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
 /**
  *-------------------------------------------------------------
+ * Emit client-to-client events (typing, seen, ...)
+ *-------------------------------------------------------------
+ */
+function emitClientEvent(event, data) {
+  if (!socket.connected) {
+    return false;
+  }
+  return socket.emit("client-event", {
+    event: event,
+    to_id: data && (data.to_id ?? data.to),
+    data: data,
+  });
+}
+
+/**
+ *-------------------------------------------------------------
  * Trigger typing event
  *-------------------------------------------------------------
  */
 function isTyping(status) {
-  return clientSendChannel.trigger("client-typing", {
+  return emitClientEvent("client-typing", {
     from_id: auth_id, // Me
     to_id: getMessengerId(), // Messenger
     typing: status,
@@ -759,7 +765,7 @@ function makeSeen(status) {
     data: { _token: csrfToken, id: getMessengerId() },
     dataType: "JSON",
   });
-  return clientSendChannel.trigger("client-seen", {
+  return emitClientEvent("client-seen", {
     from_id: auth_id, // Me
     to_id: getMessengerId(), // Messenger
     seen: status,
@@ -772,7 +778,7 @@ function makeSeen(status) {
  *-------------------------------------------------------------
  */
 function sendContactItemUpdates(status) {
-  return clientSendChannel.trigger("client-contactItem", {
+  return emitClientEvent("client-contactItem", {
     from: auth_id, // Me
     to: getMessengerId(), // Messenger
     update: status,
@@ -785,8 +791,9 @@ function sendContactItemUpdates(status) {
  *-------------------------------------------------------------
  */
 function sendMessageDeleteEvent(messageId) {
-  return clientSendChannel.trigger("client-messageDelete", {
+  return emitClientEvent("client-messageDelete", {
     id: messageId,
+    to_id: getMessengerId(),
   });
 }
 /**
@@ -795,15 +802,16 @@ function sendMessageDeleteEvent(messageId) {
  *-------------------------------------------------------------
  */
 function sendDeleteConversationEvent() {
-  return clientSendChannel.trigger("client-deleteConversation", {
+  return emitClientEvent("client-deleteConversation", {
     from: auth_id,
     to: getMessengerId(),
+    to_id: getMessengerId(),
   });
 }
 
 /**
  *-------------------------------------------------------------
- * Check internet connection using pusher states
+ * Check internet connection using socket states
  *-------------------------------------------------------------
  */
 function checkInternet(state, selector) {
@@ -1266,25 +1274,31 @@ $(document).ready(function () {
   // make message input autosize.
   autosize($(".m-send"));
 
-  // check if pusher has access to the channel [Internet status]
-  pusher.connection.bind("state_change", function (states) {
+  // socket connection status [Internet status]
+  const socketState = (state) => {
     let selector = $(".internet-connection");
-    checkInternet(states.current, selector);
-    // listening for pusher:subscription_succeeded
-    channel.bind("pusher:subscription_succeeded", function () {
-      // On connection state change [Updating] and get [info & msgs]
-      if (getMessengerId() != 0) {
-        if (
-          $(".messenger-list-item")
-            .find("tr[data-action]")
-            .attr("data-action") == "1"
-        ) {
-          $(".messenger-listView").hide();
-        }
-        IDinfo(getMessengerId());
+    checkInternet(state, selector);
+  };
+
+  socket.on("connect", () => {
+    socketState("connected");
+    // On connection [Updating] and get [info & msgs]
+    if (getMessengerId() != 0) {
+      if (
+        $(".messenger-list-item")
+          .find("tr[data-action]")
+          .attr("data-action") == "1"
+      ) {
+        $(".messenger-listView").hide();
       }
-    });
+      IDinfo(getMessengerId());
+    }
   });
+
+  socket.on("connecting", () => socketState("connecting"));
+  socket.io.on("reconnect_attempt", () => socketState("connecting"));
+  socket.on("disconnect", () => socketState("disconnected"));
+  socket.on("connect_error", () => socketState("disconnected"));
 
   // tabs on click, show/hide...
   $(".messenger-listView-tabs a").on("click", function () {

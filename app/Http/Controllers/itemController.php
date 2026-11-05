@@ -252,7 +252,7 @@ class itemController extends Controller
                 $itemsData[] = [
                     'item_id' => $itemId,
                     'item_data' => $item_total->toArray(),
-                    'dates' => json_decode($datesJson)
+                    'dates' => json_decode($datesJson, true)
                 ];
             }
         }
@@ -283,7 +283,7 @@ class itemController extends Controller
                     $newBook->to_id = $itemOwner['id'];
                     $newBook->save();
 
-                    $datesArray = json_decode($itemDatas, true);
+                    $datesArray = is_string($itemDatas) ? json_decode($itemDatas, true) : $itemDatas;
 
                     $dados = [
                         'assunto' => 'Você tem uma reserva 🥳',

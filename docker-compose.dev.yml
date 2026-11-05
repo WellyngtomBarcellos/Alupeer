@@ -1,0 +1,57 @@
+# Development overrides
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+services:
+  app:
+    build:
+      args:
+        APP_ENV: local
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: ${APP_URL:-http://localhost:8000}
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      RUN_MIGRATIONS: ${RUN_MIGRATIONS:-false}
+      SERVER_NAME: ${SERVER_NAME:-:80}
+      SOCKET_ALLOWED_ORIGIN: ${SOCKET_ALLOWED_ORIGIN:-http://localhost:8000}
+    ports:
+      - "${APP_HTTP_PORT:-8000}:80"
+      - "${APP_HTTPS_PORT:-8443}:443"
+    volumes:
+      - ./:/app
+      - vendor_data:/app/vendor
+      - node_modules_data:/app/node_modules
+      - app_storage:/app/storage
+      - app_bootstrap_cache:/app/bootstrap/cache
+      - caddy_data:/data
+      - caddy_config:/config
+    tty: true
+
+  socket:
+    ports:
+      - "${SOCKET_PORT:-3001}:3001"
+    environment:
+      SOCKET_ALLOWED_ORIGIN: ${SOCKET_ALLOWED_ORIGIN:-http://localhost:8000}
+
+  db:
+    ports:
+      - "${DB_PUBLISH_PORT:-3306}:3306"
+
+  vite:
+    image: node:24-slim
+    container_name: alupeer_vite
+    working_dir: /app
+    profiles: ["vite"]
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_HOST: "0.0.0.0"
+    ports:
+      - "${VITE_PORT:-5173}:5173"
+    volumes:
+      - ./:/app
+      - node_modules_data:/app/node_modules
+    networks:
+      - alupeer
+
+volumes:
+  vendor_data:
+  node_modules_data:

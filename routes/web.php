@@ -13,6 +13,10 @@ use App\Http\Controllers\BitcoinController;
 
 
 
+Route::get('/up', function () {
+    return response('OK', 200)->header('Content-Type', 'text/plain');
+});
+
 Route::get('/Bookin/make/devolvido', [AnounceController::class, 'getBack']);
 Route::get('review/send', [AnounceController::class, 'reviewSend']);
 

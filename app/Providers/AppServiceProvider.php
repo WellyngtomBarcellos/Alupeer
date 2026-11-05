@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Override Chatify's Pusher messenger with Socket.IO (registered after package providers).
+        $this->app->bind('ChatifyMessenger', function () {
+            return new \App\Services\SocketChatifyMessenger();
+        });
     }
 
     /**

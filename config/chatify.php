@@ -35,22 +35,17 @@ return [
 
     /*
     |-------------------------------------
-    | Pusher API credentials
+    | Socket.IO realtime server
     |-------------------------------------
+    | url      -> browser-facing URL (same origin via Caddy proxy preferred)
+    | internal_url -> PHP -> Node on the compose network
+    | secret   -> shared HMAC secret for tokens + internal emit
     */
-    'pusher' => [
-        'debug' => env('APP_DEBUG', false),
-        'key' => env('PUSHER_APP_KEY'),
-        'secret' => env('PUSHER_APP_SECRET'),
-        'app_id' => env('PUSHER_APP_ID'),
-        'options' => [
-            'cluster' => env('PUSHER_APP_CLUSTER', 'mt1'),
-            'host' => env('PUSHER_HOST') ?: 'api-'.env('PUSHER_APP_CLUSTER', 'mt1').'.pusher.com',
-            'port' => env('PUSHER_PORT', 443),
-            'scheme' => env('PUSHER_SCHEME', 'https'),
-            'encrypted' => true,
-            'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
-        ],
+    'socket' => [
+        'url' => env('SOCKET_SERVER_URL', ''),
+        'internal_url' => env('SOCKET_SERVER_INTERNAL_URL', 'http://socket:3001'),
+        'secret' => env('SOCKET_SERVER_SECRET', ''),
+        'allowed_origin' => env('SOCKET_ALLOWED_ORIGIN', '*'),
     ],
 
     /*
